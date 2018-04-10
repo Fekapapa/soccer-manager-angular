@@ -1,15 +1,17 @@
 <body>
+  <h2>{{state[0].title}}</h2>
   <div class="maincontainer">
       <div class="header">TODOS</div>
       <div class="inputcontainer">
-          <input class="input" #textinput>
-          <button (click) = "setItem(textinput.value); logger()" class="addbutton">Add</button>
+          <input class="input" #nameinput>
+          <input class="input" #teaminput>
+          <button (click) = "setItem(nameinput, teaminput)" class="addbutton">Add</button>
       </div>
       <div class="rowcontainer">
           <div *ngFor = "let i of state; let ind = index" class="todorow">
-              <div class="title">{{i.title}}</div>
-              <div (click) = "removeItem(ind)" class="delete"></div>
-              <div (click) = "readyCheck($event)" [ngClass]="i.status === 1 ? 'readycheck' : 'uncheck'"></div>
+              <span class="title">{{i.name}}</span>
+              <span class="title">{{i.team}}</span>
+              <div (click) = "onDelete(i.id)" class="delete"></div>
           </div>
       </div>
   </div>

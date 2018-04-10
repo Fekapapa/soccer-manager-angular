@@ -7,17 +7,20 @@ import { AppComponent } from './app.component';
 import { StateService } from './state.service';
 import { TodoComponentComponent } from './todo-component/todo-component.component';
 import { ListComponentComponent } from './list-component/list-component.component';
+import { TeamComponent } from './team/team.component';
 
 const appRoutes: Routes = [
-  { path: 'todo', component: TodoComponentComponent },
-  { path: 'list', component: ListComponentComponent },
+  { path: 'soccer-players', component: TodoComponentComponent },
+  { path: 'soccer-teams', component: TeamComponent },
+  { path: 'soccer-list', component: ListComponentComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoComponentComponent,
-    ListComponentComponent
+    ListComponentComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,
