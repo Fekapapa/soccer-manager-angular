@@ -1,0 +1,12 @@
+<p>
+  list-component works!
+</p>
+<p>
+  {{state}}
+</p>
+<div class="rowcontainer">
+  <div *ngFor = "let i of state; let ind = index" class="todorow">
+    <div class="title">{{i.title}}</div>
+    <div (click) = "removeItem(ind)" class="delete"></div>
+    <div (click) = "readyCheck($event)" [ngClass]="i.status === 1 ? 'readycheck' : 'uncheck'"></div>
+</div>
