@@ -1,0 +1,16 @@
+<body>
+  <div class="maincontainer">
+      <div class="header">TODOS</div>
+      <div class="inputcontainer">
+          <input class="input" #textinput>
+          <button (click) = "pushItem(textinput.value); logger()" class="addbutton">Add</button>
+      </div>
+      <div class="rowcontainer">
+          <div *ngFor = "let i of items; let ind = index" class="todorow">
+              <div class="title">{{i.title}}</div>
+              <div (click) = "removeItem(ind)" class="delete"></div>
+              <div (click) = "readyCheck($event)" [ngClass]="i.status === 1 ? 'readycheck' : 'uncheck'"></div>
+          </div>
+      </div>
+  </div>
+</body>
