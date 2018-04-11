@@ -1,10 +1,16 @@
-<div class="rowcontainer">
-    <div *ngFor = "let team of this.stateService.state.teamList" class="todorow oneTeam">
-      <div *ngFor = "let player of this.stateService.state.playerList" class="todorow">
-        <div *ngIf="player.team === team.name">
-          <span class="title">{{player.name}}</span>
-          <span class="title">{{player.team}}</span>
+<div class="container-positioner ">
+  <div class="maincontainer">
+    <h2 class="box-title">List of the Football Clubs</h2>
+    <div *ngFor = "let team of this.stateService.state.teamList" class="teamcard-container">
+      <div class="team-title">Players in team {{team.name}}</div>
+      <div *ngFor = "let player of this.stateService.state.playerList" class="player-list">
+        <div *ngIf="player.team === team.name" class="player-name">
+          <span>Name: {{player.name}} | </span>
+          <span>Football power: {{player.footballPower}} | </span>
+          <span>Accuracy: {{player.accuracy}} | </span>
+          <span>Stamina: {{player.stamina}}</span>
         </div>
       </div>
     </div>
+  </div>
 </div>

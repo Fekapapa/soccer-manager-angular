@@ -1,21 +1,32 @@
-<div class="maincontainer">
-    <div class="header">TODOS</div>
+<div class="container-positioner ">
+  <div class="maincontainer">
+    <div class="box-title">Manage Football Teams Here</div>
     <div class="inputcontainer">
-        <input class="input" #teaminput>
-        <button (click) = "setTeam(teaminput)" class="addbutton">Add</button>
+      <div class="input-box">
+        <div class="input-title">Add new football team here:</div>
+        <input class="input" placeholder="Teamname..." #teaminput>
+      </div>
+      <div (click)="setTeam(teaminput)" class="addbutton">Add</div>
     </div>
-    <div class="rowcontainer">
-        <div *ngFor = "let team of this.stateService.state.teamList" class="todorow">
-          <div *ngIf="team.autoEdit" class="inputcontainer">
-              <input class="input" value="{{team.name}}" #teamInputEdited>
-              <button (click) = "onEditSubmitTeam(teamInputEdited, team.id)" class="addbutton">Edit</button>
-              <button (click) = "onEditTeam(team.id)" class="addbutton">Back</button>
+    <div class="row-container">
+      <div *ngFor = "let team of this.stateService.state.teamList" class="todorow">
+        <div *ngIf="team.autoEdit" class="inputcontainer">
+          <input class="input" value="{{team.name}}" #teamInputEdited>
+          <button (click)="onEditSubmitTeam(teamInputEdited, team.id)" class="addbutton">Edit</button>
+          <button (click)="onEditTeam(team.id)" class="addbutton">Back</button>
+        </div>
+        <div *ngIf="!team.autoEdit" class="playercard-display-box">
+          <div class="input-box">
+            <div class="player-item-row">
+              <span class="title">{{team.name}}</span>
+            </div>
           </div>
-          <div *ngIf="!team.autoEdit" class="inputcontainer">
-            <span class="title">{{team.name}}</span>
-            <div (click) = "onDelete(team.id)" class="delete"></div>
-            <div (click) = "onEditTeam(team.id)">Edit</div>
+          <div class="playercard-button-box">
+            <div (click)="onEditTeam(team.id)" class="playercard-button">Edit Team</div>
+            <div (click)="onDelete(team.id)" class="playercard-button">Delete Team</div>
           </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

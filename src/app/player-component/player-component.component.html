@@ -1,54 +1,64 @@
-<body>
+<div class="container-positioner">
   <div class="maincontainer">
-      <div class="header">Football Players</div>
+    <h2 class="box-title">Football Player Manager</h2>
       <div class="inputcontainer">
+        <div class="input-box">
+          <div class="input-title">Add new football palyer here:</div>
           <input class="input" placeholder="Name..." #nameInput>
           <input class="input" placeholder="FootballPower..." #footballPowerInput>
           <input class="input" placeholder="Accuracy..." #accuracyInput>
           <input class="input" placeholder="Stamina..." #staminaInput>
-          <select #teamInput>
+          <div class="input-title">Select a football team for the new player:</div>
+          <select class="input-select" #teamInput>
             <option *ngFor = "let team of this.stateService.state.teamList" value="{{team}}" selected>{{team.name}}</option>
           </select>
-          <button (click) = "setItem(nameInput, footballPowerInput, accuracyInput, staminaInput, teamInput)" class="addbutton">Add</button>
+        </div>
+        <div (click)="setItem(nameInput, footballPowerInput, accuracyInput, staminaInput, teamInput)" class="addbutton">Add new player to the list</div>
       </div>
-      <div>
-          <div *ngFor = "let player of this.stateService.state.playerList" class="todorow">
-            <div *ngIf="player.autoEdit" class="inputcontainer">
-                <input class="input" value="{{player.name}}" #nameInputEdited>
-                <input class="input" value="{{player.footballPower}}" #footballPowerInputEdited>
-                <input class="input" value="{{player.accuracy}}" #accuracyInputEdited>
-                <input class="input" value="{{player.stamina}}" #staminaInputEdited>
-                <select #teamInputEdited>
-                  <option *ngFor = "let team of this.stateService.state.teamList" value="{{team}}" >{{team.name}}</option>
-                </select>
-                <button (click) = "onEditSubmit(nameInputEdited, footballPowerInputEdited, accuracyInputEdited, staminaInputEdited, teamInputEdited,  player.id)" class="addbutton">Edit</button>
-                <button (click) = "onEdit(player.id)" class="addbutton">Back</button>
+      <div *ngFor="let player of this.stateService.state.playerList" class="playercard-container">
+        <div *ngIf="player.autoEdit" class="inputcontainer">
+          <div class="input-box">
+            <input class="input" value="{{player.name}}" #nameInputEdited>
+            <input class="input" value="{{player.footballPower}}" #footballPowerInputEdited>
+            <input class="input" value="{{player.accuracy}}" #accuracyInputEdited>
+            <input class="input" value="{{player.stamina}}" #staminaInputEdited>
+            <select class="input-select" #teamInputEdited>
+              <option *ngFor = "let team of this.stateService.state.teamList" value="{{team.name}}" >{{team.name}}</option>
+            </select>
+          </div>
+          <div class="playercard-button-box">
+            <button (click)="onEditSubmit(nameInputEdited, footballPowerInputEdited, accuracyInputEdited, staminaInputEdited, teamInputEdited,  player.id)" class="playercard-button">Edit</button>
+            <button (click)="onEdit(player.id)" class="playercard-button">Back</button>
+          </div>
+        </div>
+        <div *ngIf="!player.autoEdit" class="playercard-display-box">
+          <div class="input-box">
+            <div class="player-item-row">
+              <span class="title bold">Name:</span>
+              <span class="title">{{player.name}}</span>
             </div>
-            <div *ngIf="!player.autoEdit" >
-              <div>
-                <span class="title">Name:</span>
-                <span class="title">{{player.name}}</span>
-              </div>
-              <div>
-                <span class="title">Footballpower:</span>
-                <span class="title">{{player.footballPower}}</span>
-              </div>
-              <div>
-                <span class="title">Accuracy:</span>
-                <span class="title">{{player.accuracy}}</span>
-              </div>
-              <div>
-                <span class="title">Stamina:</span>
-                <span class="title">{{player.stamina}}</span>
-              </div>
-              <div>
-                <span class="title">Team:</span>
-                <span class="title">{{player.team}}</span>
-              </div>
-              <div (click) = "onDelete(player.id)" class="delete"></div>
-              <div (click) = "onEdit(player.id)">Edit</div>
+            <div class="player-item-row">
+              <span class="title bold">Footballpower:</span>
+              <span class="title">{{player.footballPower}}</span>
+            </div>
+            <div class="player-item-row">
+              <span class="title bold">Accuracy:</span>
+              <span class="title">{{player.accuracy}}</span>
+            </div>
+            <div class="player-item-row">
+              <span class="title bold">Stamina:</span>
+              <span class="title">{{player.stamina}}</span>
+            </div>
+            <div class="player-item-row">
+              <span class="title bold">Team:</span>
+              <span class="title">{{player.team}}</span>
             </div>
           </div>
-      </div>
+          <div class="playercard-button-box">
+            <div (click)="onEdit(player.id)" class="playercard-button">Edit Player</div>
+            <div (click)="onDelete(player.id)" class="playercard-button">Delete Player</div>
+          </div>
+        </div>
+    </div>
   </div>
-</body>
+</div>

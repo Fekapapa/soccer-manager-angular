@@ -14,22 +14,22 @@ export class StateService {
          autoEdit: false
       },
       {
-         name: 'none1',
+         name: 'Ferencvárosi FC',
          id: 1,
          autoEdit: false
       },
       {
-         name: 'none2',
+         name: 'Barcelone FC',
          id: 2,
          autoEdit: false
       },
       {
-         name: 'none3',
+         name: 'Újpest FC',
          id: 3,
          autoEdit: false
       },
       {
-         name: 'none5',
+         name: 'Real Madrid FC',
          id: 4,
          autoEdit: false
       }],
