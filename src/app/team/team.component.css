@@ -1,0 +1,9 @@
+.delete {
+    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+    background-image: url('../../assets/images/basket.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}

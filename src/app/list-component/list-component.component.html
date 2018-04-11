@@ -1,12 +1,10 @@
-<p>
-  list-component works!
-</p>
-<p>
-  {{state}}
-</p>
 <div class="rowcontainer">
-  <div *ngFor = "let i of state; let ind = index" class="todorow">
-    <div class="title">{{i.title}}</div>
-    <div (click) = "removeItem(ind)" class="delete"></div>
-    <div (click) = "readyCheck($event)" [ngClass]="i.status === 1 ? 'readycheck' : 'uncheck'"></div>
+    <div *ngFor = "let team of this.stateService.state.teamList" class="todorow oneTeam">
+      <div *ngFor = "let player of this.stateService.state.playerList" class="todorow">
+        <div *ngIf="player.team === team.name">
+          <span class="title">{{player.name}}</span>
+          <span class="title">{{player.team}}</span>
+        </div>
+      </div>
+    </div>
 </div>

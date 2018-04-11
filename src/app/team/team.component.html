@@ -1,3 +1,21 @@
-<p>
-  team works!
-</p>
+<div class="maincontainer">
+    <div class="header">TODOS</div>
+    <div class="inputcontainer">
+        <input class="input" #teaminput>
+        <button (click) = "setTeam(teaminput)" class="addbutton">Add</button>
+    </div>
+    <div class="rowcontainer">
+        <div *ngFor = "let team of this.stateService.state.teamList" class="todorow">
+          <div *ngIf="team.autoEdit" class="inputcontainer">
+              <input class="input" value="{{team.name}}" #teamInputEdited>
+              <button (click) = "onEditSubmitTeam(teamInputEdited, team.id)" class="addbutton">Edit</button>
+              <button (click) = "onEditTeam(team.id)" class="addbutton">Back</button>
+          </div>
+          <div *ngIf="!team.autoEdit" class="inputcontainer">
+            <span class="title">{{team.name}}</span>
+            <div (click) = "onDelete(team.id)" class="delete"></div>
+            <div (click) = "onEditTeam(team.id)">Edit</div>
+          </div>
+        </div>
+    </div>
+</div>
